@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WindowsFormsApp1.Models
+namespace ConsoleApp_Modulo3.Models
 {
     public class Estudiante
     {
@@ -24,5 +24,6 @@ namespace WindowsFormsApp1.Models
         }
 
         public DateTime FechaNacimiento { get; set; }
+        public bool EstaBorrado { get; set; }
     }
 }

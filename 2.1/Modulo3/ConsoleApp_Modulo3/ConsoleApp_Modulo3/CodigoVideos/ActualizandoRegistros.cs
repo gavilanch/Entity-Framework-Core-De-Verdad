@@ -1,9 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using ConsoleApp_Modulo3.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using WindowsFormsApp1.Models;
 
 namespace ConsoleApp_Modulo3.CodigoVideos
 {

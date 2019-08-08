@@ -1,8 +1,8 @@
-﻿using System;
+﻿using ConsoleApp_Modulo3.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using WindowsFormsApp1.Models;
 
 namespace ConsoleApp_Modulo3.CodigoVideos
 {
@@ -44,8 +44,8 @@ namespace ConsoleApp_Modulo3.CodigoVideos
         {
             using (var context = new ApplicationDbContext())
             {
-                var students = context.Estudiantes.ToList();
-                return students;
+                var estudiantes = context.Estudiantes.ToList();
+                return estudiantes;
             }
         }
     }

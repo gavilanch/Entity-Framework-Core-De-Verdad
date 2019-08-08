@@ -1,9 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using ConsoleApp_Modulo3.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using WindowsFormsApp1.Models;
 
 namespace ConsoleApp_Modulo3
 {
@@ -18,11 +18,20 @@ namespace ConsoleApp_Modulo3
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // Mapeo flexible
             modelBuilder.Entity<Estudiante>().Property(x => x.Nombre).HasField("nombre");
+           
+            // Filtro a nivel del modelo
+            modelBuilder.Entity<Estudiante>().HasQueryFilter(x => x.EstaBorrado == false);
+            
+            // Data Seeding
+            var estudiante1 = new Estudiante() { Id = 7, Nombre = "Robert Seed", FechaNacimiento = new DateTime(1990, 4, 12), EstaBorrado = false };
+            modelBuilder.Entity<Estudiante>().HasData(estudiante1);
         }
 
 
         public DbSet<Estudiante> Estudiantes { get; set; }
+        public DbSet<Curso> Cursos { get; set; }
 
     }
 }

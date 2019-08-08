@@ -1,7 +1,7 @@
-﻿using System;
+﻿using ConsoleApp_Modulo3.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using WindowsFormsApp1.Models;
 
 namespace ConsoleApp_Modulo3.CodigoVideos
 {
