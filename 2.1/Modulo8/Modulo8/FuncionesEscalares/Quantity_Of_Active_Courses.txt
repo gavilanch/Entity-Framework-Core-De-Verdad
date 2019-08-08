@@ -1,0 +1,33 @@
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- Author:		Felipe Gavilán
+-- Create date: 22-07-2018
+-- Description:	Devuelve la cantidad de cursos activos que
+-- lleva el estudiante
+-- =============================================
+CREATE FUNCTION [dbo].[Quantity_Of_Active_Courses]
+(
+	-- Add the parameters for the function here
+	@StudentId int
+)
+RETURNS int
+AS
+BEGIN
+	-- Declare the return variable here
+	DECLARE @result int
+
+	-- Add the T-SQL statements to compute the return value here
+	SELECT @result = count(*)
+	from  studentsCourses
+	where StudentId = @StudentId and IsActive = 'true'
+
+	-- Return the result of the function
+	RETURN @result
+
+END
+GO
