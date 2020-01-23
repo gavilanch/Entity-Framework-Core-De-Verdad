@@ -9,7 +9,7 @@ using System.Text;
 
 namespace FuncionesEscalares
 {
-    public class ApplicationDbContext: DbContext
+    public class ApplicationDbContext : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -52,10 +52,15 @@ namespace FuncionesEscalares
 
         public override int SaveChanges()
         {
-            foreach (var item in ChangeTracker.Entries()
+
+            var entities = ChangeTracker.Entries()
              .Where(e => e.State == EntityState.Deleted &&
-             e.Metadata.GetProperties().Any(x => x.Name == "EstaBorrado")))
+             e.Metadata.GetProperties().Any(x => x.Name == "EstaBorrado"))
+             .ToList();
+
+            for (int i = 0; i < entities.Count(); i++)
             {
+                var item = entities[i];
                 item.State = EntityState.Unchanged;
                 item.CurrentValues["EstaBorrado"] = true;
             }
