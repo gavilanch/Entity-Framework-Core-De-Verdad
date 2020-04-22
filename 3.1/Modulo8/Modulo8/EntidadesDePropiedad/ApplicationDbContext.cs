@@ -11,7 +11,7 @@ namespace EntidadesDePropiedad
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=(localdb)\\mssqllocaldb;Initial Catalog=EFCore_Modulo8_Division;Integrated Security=True")
+            optionsBuilder.UseSqlServer("Data Source=(localdb)\\mssqllocaldb;Initial Catalog=EFCore_Modulo8_EntidadDePropiedad;Integrated Security=True")
                 .EnableSensitiveDataLogging(true)
                 // descomenta la siguiente línea para utilizar Carga Perezosa
                 //.UseLazyLoadingProxies()
@@ -31,29 +31,23 @@ namespace EntidadesDePropiedad
         {
             modelBuilder.Entity<Estudiante>().OwnsOne(x => x.Casa, ad =>
             {
-                ad.Property(x => x.Street).HasColumnName("Street");
-                ad.Property(x => x.City).HasColumnName("City");
+                ad.Property(x => x.Calle).HasColumnName("Calle");
+                ad.Property(x => x.Ciudad).HasColumnName("Ciudad");
             });
             modelBuilder.Entity<Estudiante>().OwnsOne(x => x.BillingAddress);
             modelBuilder.Entity<Contacto>().OwnsOne(x => x.Casa, ad =>
             {
-                ad.Property(x => x.Street).HasColumnName("Street");
-                ad.Property(x => x.City).HasColumnName("City");
+                ad.Property(x => x.Calle).HasColumnName("Calle");
+                ad.Property(x => x.Ciudad).HasColumnName("Ciudad");
             });
 
+
+            modelBuilder.Entity<Estudiante>().HasData(new Estudiante() { Id = 1, Nombre = "Felipe" });
 
             base.OnModelCreating(modelBuilder);
         }
 
         public DbSet<Estudiante> Estudiantes { get; set; }
         public DbSet<Contacto> Contactos { get; set; }
-
-        [DbFunction(Name = "Quantity_Of_Active_Courses")]
-        public static int Quantity_Of_Active_Courses(int StudentId)
-        {
-            throw new Exception();
-        }
-
-
     }
 }
