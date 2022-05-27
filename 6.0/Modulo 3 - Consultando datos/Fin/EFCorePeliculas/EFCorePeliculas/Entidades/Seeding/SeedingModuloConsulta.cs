@@ -168,12 +168,14 @@ namespace EFCorePeliculas.Entidades.Seeding
                new Dictionary<string, object> { [generoIdPropiedad] = comedia.Identificador, [peliculaIdPropiedad] = farFromHome.Id }
            );
 
+            // Para matrix pongo la fecha en el futuro
+
             var theMatrixResurrections = new Pelicula()
             {
                 Id = 5,
                 Titulo = "The Matrix Resurrections",
                 EnCartelera = true,
-                FechaEstreno = DateTime.Today,
+                FechaEstreno = new DateTime(2100, 1, 1),
                 PosterURL = "https://upload.wikimedia.org/wikipedia/en/5/50/The_Matrix_Resurrections.jpg",
             };
 
